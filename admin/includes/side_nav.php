@@ -90,13 +90,13 @@
                 <li class="nav-item">
                 <a href="<?php echo BASE_URL .'admin/units/listunits.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
-                    <p>List Users</p>
+                    <p>List Units</p>
                 </a>
                 </li>
                 <li class="nav-item">
                 <a href="<?php echo BASE_URL .'admin/units/timttableunits.php' ?>" class="nav-link">
                     <i class="fa-solid fa-user-check nav-icon"></i>
-                    <p>Admin</p>
+                    <p>Timetable</p>
                 </a>
                 </li>
             </ul>
