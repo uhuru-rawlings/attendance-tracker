@@ -72,10 +72,10 @@
                     <h5>Add Courses</h5>
                     <form action="addcourse_fun.php" method="post">
                         <?php
-                            if(isset($_GET['error'])){
-                                echo "<p class='text-danger'>".$_GET['error']."</p>";
-                            }else if($_GET['success']){
-                                echo "<p class='text-success'>".$_GET['success']."</p>";
+                            if(isset($_GET['courseerror'])){
+                                echo "<p class='text-danger'>".$_GET['courseerror']."</p>";
+                            }else if($_GET['coursesuccess']){
+                                echo "<p class='text-success'>".$_GET['coursesuccess']."</p>";
                             }
                         ?>
                        <div class="row">
@@ -89,7 +89,7 @@
                             </div>
                        </div>
                         <div class="form-group">
-                            <input type="submit" name="addstudents" value="Save Details" class="btn btn-primary">
+                            <input type="submit" name="addcourse" value="Save Details" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
@@ -97,7 +97,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Add Units</h5>
-                    <form action="addstudents_fun.php" method="post">
+                    <form action="addcourse_fun.php" method="post">
                         <?php
                             if(isset($_GET['error'])){
                                 echo "<p class='text-danger'>".$_GET['error']."</p>";
@@ -120,7 +120,7 @@
                             </div>
                        </div>
                         <div class="form-group">
-                            <input type="submit" name="addstudents" value="Save Details" class="btn btn-primary">
+                            <input type="submit" name="addunit" value="Save Details" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
