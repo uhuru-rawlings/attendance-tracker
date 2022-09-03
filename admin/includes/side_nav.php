@@ -72,7 +72,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item <?php if($_SESSION['name'] == "users"){ echo("menu-open"); } ?>">
+        <li class="nav-item <?php if($_SESSION['name'] == "units"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
@@ -82,19 +82,19 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/users/listadmins.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/units/uploadunits.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
-                    <p>List Admin</p>
+                    <p>Upload Units</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/users/listusers.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/units/listunits.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
                     <p>List Users</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/users/addadmins.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/units/timttableunits.php' ?>" class="nav-link">
                     <i class="fa-solid fa-user-check nav-icon"></i>
                     <p>Admin</p>
                 </a>
