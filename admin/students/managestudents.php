@@ -2,7 +2,7 @@
   include_once("../../config.php");
   include("../includes/connection.php");
   session_start();
-  $_SESSION['name'] = "teachers";
+  $_SESSION['name'] = "students";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,16 +70,16 @@
             <div class="card">
                 <div class="card-body">
                     <?php
-                      if(isset($_GET['teacher'])){
-                        $id = $_GET['teacher'];
-                        $sql = "SELECT * FROM teachers WHERE id=?";
+                      if(isset($_GET['student'])){
+                        $id = $_GET['student'];
+                        $sql = "SELECT * FROM students WHERE id=?";
                         $query = $pdo -> prepare($sql);
                         $query -> execute([$id]);
                         $rows = $query -> rowCount();
                         if($rows > 0){
                           while($res = $query -> fetch(PDO::FETCH_ASSOC)){
                     ?>
-                    <form action="updateteachers_fun.php" method="post">
+                    <form action="updatestudents_fun.php" method="post">
                         <?php
                             if(isset($_GET['error'])){
                                 echo "<p class='text-danger'>".$_GET['error']."</p>";
@@ -108,7 +108,7 @@
                             </div>
                             <div class="form-group col">
                                 <label for="dateofbirth">Date of Birth</label>
-                                <input type="date" value="<?php echo $res['lname'] ?>" name="dateofbirth" id="dateofbirth" class="form-control" placeholder="DOB">
+                                <input type="date" value="<?php echo $res['dob'] ?>" name="dateofbirth" id="dateofbirth" class="form-control" placeholder="DOB">
                             </div>
                             <div class="form-group col">
                                 <label for="gender">Gender</label>
@@ -141,16 +141,33 @@
                         </div>
                         <div class="row">
                             <div class="form-group col">
-                                <label for="prevschool">Previous School</label>
-                                <input type="text" value="<?php echo $res['previous_school'] ?>" name="prevschool" id="prevschool" class="form-control" placeholder="Previous School">
+                                <label for="prevschool">Semester</label>
+                                <select name="semester" value="<?php echo $res['semester'] ?>" id="semester" class="form-control">
+                                    <option <?php if($res['semester'] == "SEM 1 YEAR 1"){ echo "selected"; } ?> value="SEM 1 YEAR 1">SEM 1 YEAR 1</option>
+                                    <option <?php if($res['semester'] == "SEM 2 YEAR 1"){ echo "selected"; } ?> value="SEM 2 YEAR 1">SEM 2 YEAR 1</option>
+                                    <option <?php if($res['semester'] == "SEM 3 YEAR 1"){ echo "selected"; } ?> value="SEM 3 YEAR 1">SEM 3 YEAR 1</option>
+                                    <option <?php if($res['semester'] == "SEM 1 YEAR 2"){ echo "selected"; } ?> value="SEM 1 YEAR 2">SEM 1 YEAR 2</option>
+                                    <option <?php if($res['semester'] == "SEM 2 YEAR 2"){ echo "selected"; } ?> value="SEM 2 YEAR 2">SEM 2 YEAR 2</option>
+                                    <option <?php if($res['semester'] == "SEM 3 YEAR 2"){ echo "selected"; } ?> value="SEM 3 YEAR 2">SEM 3 YEAR 2</option>
+                                    <option <?php if($res['semester'] == "SEM 1 YEAR 3"){ echo "selected"; } ?> value="SEM 1 YEAR 3">SEM 1 YEAR 3</option>
+                                    <option <?php if($res['semester'] == "SEM 2 YEAR 3"){ echo "selected"; } ?> value="SEM 2 YEAR 3">SEM 2 YEAR 3</option>
+                                    <option <?php if($res['semester'] == "SEM 3 YEAR 3"){ echo "selected"; } ?> value="SEM 3 YEAR 3">SEM 3 YEAR 3</option>
+                                    <option <?php if($res['semester'] == "SEM 1 YEAR 4"){ echo "selected"; } ?> value="SEM 1 YEAR 4">SEM 1 YEAR 4</option>
+                                    <option <?php if($res['semester'] == "SEM 2 YEAR 4"){ echo "selected"; } ?> value="SEM 2 YEAR 4">SEM 2 YEAR 4</option>
+                                    <option <?php if($res['semester'] == "SEM 3 YEAR 4"){ echo "selected"; } ?> value="SEM 3 YEAR 4">SEM 3 YEAR 4</option>
+                                </select>
                             </div>
                             <div class="form-group col">
-                                <label for="staffid">Staff Id</label>
-                                <input type="text" name="staffid" value="<?php echo $res['staffid'] ?>" id="staffid" class="form-control" placeholder="StaffId">
+                                <label for="staffid">ADM. No</label>
+                                <input type="text" name="staffid" value="<?php echo $res['admno'] ?>" id="staffid" class="form-control" placeholder="Adm No.">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="updateteachers" value="Update Details" class="btn btn-primary">
+                            <label for="staffid">Course Name</label>
+                            <input type="text" value="<?php echo $res['coursename'] ?>" name="coursename" id="coursename" class="form-control" placeholder="Course Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="updatestudents" value="Update Details" class="btn btn-primary">
                         </div>
                     </form>
                     <?php

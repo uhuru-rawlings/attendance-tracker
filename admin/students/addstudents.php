@@ -149,9 +149,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                                <label for="staffid">Course Name</label>
-                                <input type="text" name="coursename" id="coursename" class="form-control" placeholder="Course Name">
-                            </div>
+                            <label for="staffid">Course Name</label>
+                            <input type="text" name="coursename" id="coursename" class="form-control" placeholder="Course Name">
+                        </div>
                         <div class="form-group">
                             <input type="submit" name="addstudents" value="Save Details" class="btn btn-primary">
                         </div>
