@@ -2,14 +2,14 @@
   include_once("../../config.php");
   include("../includes/connection.php");
   session_start();
-  $_SESSION['name'] = "teachers";
+  $_SESSION['name'] = "students";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A.M.S | List Teachers</title>
+  <title>A.M.S | List Products</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -51,12 +51,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Teachers</h1>
+            <h1 class="m-0">Add Riders</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">List Teachers</li>
+              <li class="breadcrumb-item active">Add Riders</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

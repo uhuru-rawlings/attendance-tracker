@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item <?php if($_SESSION['name'] == "ridders"){ echo("menu-open"); } ?>">
+        <li class="nav-item <?php if($_SESSION['name'] == "students"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
@@ -53,19 +53,19 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/ridders/addriders.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/students/addstudents.php' ?>" class="nav-link">
                     <i class="fa-solid fa-plus nav-icon"></i>
-                    <p>Add Riders</p>
+                    <p>Add Students</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/ridders/updateriders.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/students/managestudents.php' ?>" class="nav-link">
                     <i class="fa-solid fa-plus nav-icon"></i>
                     <p>Manage Riders</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/ridders/listriders.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/students/liststudents.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
                     <p>List Riders</p>
                 </a>
