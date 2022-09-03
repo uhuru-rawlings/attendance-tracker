@@ -97,18 +97,35 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Add Units</h5>
-                    <form action="addcourse_fun.php" method="post">
+                    <form action="addunits_fun.php" method="post">
                         <?php
-                            if(isset($_GET['error'])){
-                                echo "<p class='text-danger'>".$_GET['error']."</p>";
-                            }else if($_GET['success']){
-                                echo "<p class='text-success'>".$_GET['success']."</p>";
+                            if(isset($_GET['unitserror'])){
+                                echo "<p class='text-danger'>".$_GET['unitserror']."</p>";
+                            }else if($_GET['unitssuccess']){
+                                echo "<p class='text-success'>".$_GET['unitssuccess']."</p>";
                             }
                         ?>
                        <div class="row">
                             <div class="form-group col">
                                 <label for="coursename">Course</label>
-                                <select name="coursename" class="form-control" id="coursename"></select>
+                                <select name="coursename" class="form-control" id="coursename">
+                                    <?php
+                                        $sql = "SELECT * FROM courses";
+                                        $query = $pdo -> prepare($sql);
+                                        $query -> execute();
+                                        $rows = $query -> rowCount();
+                                        if($rows > 0){
+                                           while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                             foreach($results as $res){
+                                                echo "<option value='{$res['coursename']}'>
+                                                {$res['coursename']}</option>";
+                                             }
+                                           }
+                                        }else{
+                                            echo "<option value=''>No courses</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group col">
                                 <label for="abreviation">Unit Name</label>
