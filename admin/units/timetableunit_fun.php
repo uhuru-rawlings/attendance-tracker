@@ -13,15 +13,15 @@
         $query -> execute([$semester,$starttime,$endtime]);
         $rows = $query -> rowCount();
         if($rows > 0){
-            header("Location: timetableunit.php?error=There is a lesson scheduled for this time.");
+            header("Location: timttableunits.php?error=There is a lesson scheduled for this time.");
         }else{
             $sql = "INSERT INTO timetable(teacher,coursename,unitname,semster,starttime,endtime) VALUES(?,?,?,?,?,?)";
             $query = $pdo -> prepare($sql);
             $query -> execute([$teacher,$coursename,$unitname,$semester,$starttime,$endtime]);
             if($query){
-                header("Location: timetableunit.php?success=unit succesfully timetabled");
+                header("Location: timttableunits.php?success=unit succesfully timetabled");
             }else{
-                header("Location: timetableunit.php?error=sorry something went wrong, unit not timetabled.");
+                header("Location: timttableunits.php?error=sorry something went wrong, unit not timetabled.");
             }
         }
     }

@@ -81,15 +81,69 @@
                         <div class="row">
                             <div class="form-group col">
                                 <label for="teacher">Teacher</label>
-                                <select name="teacher" id="teacher" class="form-control"></select>
+                                <select name="teacher" id="teacher" class="form-control">
+                                    <?php
+                                        $sql = "SELECT * FROM teachers";
+                                        $query = $pdo -> prepare($sql);
+                                        $query -> execute();
+                                        $rows = $query -> rowCount();
+                                        if($rows > 0){
+                                           while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                             foreach($results as $res){
+                                                $fullname = $res['fname']." ".$res['lname'];
+                                                echo "<option value='{$fullname}'>
+                                                {$fullname}</option>";
+                                             }
+                                           }
+                                        }else{
+                                            echo "<option value=''>No courses</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group col">
                                 <label for="coursename">Course Name</label>
-                                <select name="coursename" id="coursename" class="form-control"></select>
+                                <select name="coursename" id="coursename" class="form-control">
+                                    <?php
+                                        $sql = "SELECT * FROM courses";
+                                        $query = $pdo -> prepare($sql);
+                                        $query -> execute();
+                                        $rows = $query -> rowCount();
+                                        if($rows > 0){
+                                           while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                             foreach($results as $res){
+                                                $coursename = $res['coursename'];
+                                                echo "<option value='{$coursename}'>
+                                                {$coursename}</option>";
+                                             }
+                                           }
+                                        }else{
+                                            echo "<option value=''>No courses</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group col">
                                 <label for="unitname">Unit Name</label>
-                                <select name="unitname" id="unitname" class="form-control"></select>
+                                <select name="unitname" id="unitname" class="form-control">
+                                    <?php
+                                        $sql = "SELECT * FROM units";
+                                        $query = $pdo -> prepare($sql);
+                                        $query -> execute();
+                                        $rows = $query -> rowCount();
+                                        if($rows > 0){
+                                           while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                             foreach($results as $res){
+                                                $coursename = $res['unitname'];
+                                                echo "<option value='{$coursename}'>
+                                                {$coursename}</option>";
+                                             }
+                                           }
+                                        }else{
+                                            echo "<option value=''>No courses</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -128,7 +182,48 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Add Units</h5>
-                    <table class="table table-hover"></table>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Lecturer</th>
+                                <th>Course</th>
+                                <th>Unit</th>
+                                <th>Semester</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $sql = "SELECT * FROM timetable";
+                            $query = $pdo -> prepare($sql);
+                            $query -> execute();
+                            $rows = $query -> rowCount();
+                            if($rows == 0){
+                              echo ("<tr><td colspan='4' class='text-center'>No teachers</td></tr>");
+                            }else{
+                              while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                foreach($results as $res){
+                          ?>
+                          <tr>
+                            <td><?php echo $res['teacher'] ?></td>
+                            <td><?php echo $res['coursename'] ?></td>
+                            <td><?php echo $res['unitname'] ?></td>
+                            <td><?php echo $res['semster'] ?></td>
+                            <td><?php echo $res['starttime'] ?></td>
+                            <td><?php echo $res['endtime'] ?></td>
+                            <td>
+                              <?php echo "<a href='delete.php?unit={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
+                            </td>
+                          </tr>
+                          <?php
+                                }
+                              }
+                            }
+                          ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
