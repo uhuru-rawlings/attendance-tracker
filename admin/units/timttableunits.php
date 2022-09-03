@@ -70,26 +70,57 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Assign Units</h5>
-                    <form action="addcourse_fun.php" method="post">
+                    <form action="timetableunit_fun.php" method="post">
                         <?php
-                            if(isset($_GET['courseerror'])){
-                                echo "<p class='text-danger'>".$_GET['courseerror']."</p>";
-                            }else if($_GET['coursesuccess']){
-                                echo "<p class='text-success'>".$_GET['coursesuccess']."</p>";
+                            if(isset($_GET['error'])){
+                                echo "<p class='text-danger'>".$_GET['error']."</p>";
+                            }else if($_GET['success']){
+                                echo "<p class='text-success'>".$_GET['success']."</p>";
                             }
                         ?>
-                       <div class="row">
+                        <div class="row">
                             <div class="form-group col">
-                                <label for="coursename">Course</label>
-                                <input type="text" name="coursename" id="coursename" class="form-control" placeholder="Course">
+                                <label for="teacher">Teacher</label>
+                                <select name="teacher" id="teacher" class="form-control"></select>
                             </div>
                             <div class="form-group col">
-                                <label for="abreviation">Course</label>
-                                <input type="text" name="abreviation" id="abreviation" class="form-control" placeholder="Abreviation">
+                                <label for="coursename">Course Name</label>
+                                <select name="coursename" id="coursename" class="form-control"></select>
                             </div>
-                       </div>
+                            <div class="form-group col">
+                                <label for="unitname">Unit Name</label>
+                                <select name="unitname" id="unitname" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="prevschool">Semester</label>
+                                <select name="semester" id="semester" class="form-control">
+                                    <option value="SEM 1 YEAR 1">SEM 1 YEAR 1</option>
+                                    <option value="SEM 2 YEAR 1">SEM 2 YEAR 1</option>
+                                    <option value="SEM 3 YEAR 1">SEM 3 YEAR 1</option>
+                                    <option value="SEM 1 YEAR 2">SEM 1 YEAR 2</option>
+                                    <option value="SEM 2 YEAR 2">SEM 2 YEAR 2</option>
+                                    <option value="SEM 3 YEAR 2">SEM 3 YEAR 2</option>
+                                    <option value="SEM 1 YEAR 3">SEM 1 YEAR 3</option>
+                                    <option value="SEM 2 YEAR 3">SEM 2 YEAR 3</option>
+                                    <option value="SEM 3 YEAR 3">SEM 3 YEAR 3</option>
+                                    <option value="SEM 1 YEAR 4">SEM 1 YEAR 4</option>
+                                    <option value="SEM 2 YEAR 4">SEM 2 YEAR 4</option>
+                                    <option value="SEM 3 YEAR 4">SEM 3 YEAR 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group col">
+                                <label for="starttime">Start Time</label>
+                                <input type="time" name="starttime" id="starttime" class="form-control">
+                            </div>
+                            <div class="form-group col">
+                                <label for="endtime">End Time</label>
+                                <input type="time" name="endtime" id="endtime" class="form-control">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <input type="submit" name="addcourse" value="Save Details" class="btn btn-primary">
+                            <input type="submit" name="titmtable" value="Save Details" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
@@ -97,49 +128,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Add Units</h5>
-                    <form action="addunits_fun.php" method="post">
-                        <?php
-                            if(isset($_GET['unitserror'])){
-                                echo "<p class='text-danger'>".$_GET['unitserror']."</p>";
-                            }else if($_GET['unitssuccess']){
-                                echo "<p class='text-success'>".$_GET['unitssuccess']."</p>";
-                            }
-                        ?>
-                       <div class="row">
-                            <div class="form-group col">
-                                <label for="coursename">Course</label>
-                                <select name="coursename" class="form-control" id="coursename">
-                                    <?php
-                                        $sql = "SELECT * FROM courses";
-                                        $query = $pdo -> prepare($sql);
-                                        $query -> execute();
-                                        $rows = $query -> rowCount();
-                                        if($rows > 0){
-                                           while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
-                                             foreach($results as $res){
-                                                echo "<option value='{$res['coursename']}'>
-                                                {$res['coursename']}</option>";
-                                             }
-                                           }
-                                        }else{
-                                            echo "<option value=''>No courses</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form-group col">
-                                <label for="abreviation">Unit Name</label>
-                                <input type="text" name="unitname" id="unitname" class="form-control" placeholder="Unit name">
-                            </div>
-                            <div class="form-group col">
-                                <label for="unitabreviation">Abreviation</label>
-                                <input type="text" name="unitabreviation" id="unitabreviation" class="form-control" placeholder="Abreviation">
-                            </div>
-                       </div>
-                        <div class="form-group">
-                            <input type="submit" name="addunit" value="Save Details" class="btn btn-primary">
-                        </div>
-                    </form>
+                    <table class="table table-hover"></table>
                 </div>
             </div>
         </div>
