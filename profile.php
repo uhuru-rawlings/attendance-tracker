@@ -4,7 +4,7 @@
   session_start();
   $_SESSION['name'] = "teachers";
 
-  if(isset($_SESSION['student'])){
+  if(isset($_SESSION['student_login'])){
 
   }else{
     header("Location: Auth/index.php");

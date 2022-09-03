@@ -13,18 +13,18 @@
     <div class="shadow_login_sections">
         <div class="login_sections">
             <h3>Attendance Management System</h3>
-            <p>Please provide the following details to login</p>
-            <form action="login_fun.php" method="post">
+            <p>First time login in, please reset password to proceed.</p>
+            <form action="" method="post">
                 <div class="form-group">
-                    <label for="admissionnumber">Adm No.</label>
-                    <input type="text" name="admissionnumber" id="admissionnumber" class="form-control shadow-none" placeholder="Adm No.">
-                </div>
-                <div class="form-group">
-                    <label for="passwords">Password</label>
+                    <label for="passwords">New Password</label>
                     <input type="password" name="passwords" id="passwords" class="form-control shadow-none" placeholder="Adm No.">
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="login" id="login" class="btn btn-primary w-100" value="Login">
+                    <label for="passwords">Confirm Password</label>
+                    <input type="password" name="passwords" id="passwords" class="form-control shadow-none" placeholder="Adm No.">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="resetpassword" id="login" class="btn btn-primary w-100" value="Reset Password">
                 </div>
             </form>
         </div>

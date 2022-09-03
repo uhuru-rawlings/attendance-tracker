@@ -23,6 +23,15 @@ body{
     color: #FFFFFF;
 }
 
+.form-control{
+    background-color: inherit !important;
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+::placeholder{
+    color: #FFFFFF !important;
+}
+
 @media screen and (max-width: 970px){
     .shadow_login_sections .login_sections{
         margin: auto;
