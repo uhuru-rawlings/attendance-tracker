@@ -1,0 +1,33 @@
+.details_card .title{
+    padding: 7px;
+    border-bottom: 1px solid #464545;
+}
+td.images{
+    height: 70px;
+    width: 70px;
+}
+#dicount_form{
+    display: none;
+}
+.form-group .text-small{
+    font-size: 14px;
+}
+
+#example_filter{
+    text-align: right !important;
+}
+.row .dataTables_paginate{
+    text-align: right !important;
+}
+.idimages{
+    display: flex;
+    flex-wrap: wrap;
+}
+.idimages .image{
+    width: 350px;
+    height: 250px;
+}
+.card-body .images{
+    width: 350px;
+    height: 250px;
+}
