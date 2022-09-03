@@ -13,7 +13,7 @@ if (isset($_SESSION['adminuser'])) {
 <link rel="stylesheet" href="../css/main.d810cf0ae7f39f28f336.css">
 
 <div class="preloader flex-column justify-content-center align-items-center">
-  A.M.S
+ 
 </div>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-dark">
