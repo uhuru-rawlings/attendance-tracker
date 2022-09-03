@@ -69,7 +69,51 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Fullname</th>
+                          <th>Gender</th>
+                          <th>Phone</th>
+                          <th>Email</th>
+                          <th>Adress</th>
+                          <th>StaffId</th>
+                          <th>Tribe</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <?php
+                            $sql = "SELECT * FROM teachers";
+                            $query = $pdo -> prepare($sql);
+                            $query -> execute();
+                            $rows = $query -> rowCount();
+                            if($rows == 0){
+                              echo ("<tr><td colspan='8' class='text-center'>No teachers</td></tr>");
+                            }else{
+                              while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                foreach($results as $res){
+                          ?>
+                          <tr>
+                            <td><?php echo $res['fname']." ".$res['lname'] ?></td>
+                            <td><?php echo $res['gender'] ?></td>
+                            <td><?php echo $res['phone'] ?></td>
+                            <td><?php echo $res['email'] ?></td>
+                            <td><?php echo $res['adress'] ?></td>
+                            <td><?php echo $res['staffid'] ?></td>
+                            <td><?php echo $res['tribe'] ?></td>
+                            <td>
+                              <?php echo "<a href='delete.php?teacher={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
+                              <?php echo "<a href='manage-teachers.php?teacher={$res['id']}'><i class='fa-solid fa-pen'></i></a>" ?>
+                            </td>
+                          </tr>
+                          <?php
+                                }
+                              }
+                            }
+                          ?>
+                      </tbody>
+                    </table>
                 </div>
             </div>
         </div>
