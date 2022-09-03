@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A.M.S | Add Teachers</title>
+  <title>A.M.S | Add Students</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -51,12 +51,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Add Teachers</h1>
+            <h1 class="m-0">Add Students</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Add Teachers</li>
+              <li class="breadcrumb-item active">Add Students</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -91,6 +91,10 @@
                             <div class="form-group col">
                                 <label for="lastname">Lastname</label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname">
+                            </div>
+                            <div class="form-group col">
+                                <label for="dateofbirth">Date of Birth</label>
+                                <input type="date" name="dateofbirth" id="dateofbirth" class="form-control" placeholder="DOB">
                             </div>
                             <div class="form-group col">
                                 <label for="gender">Gender</label>
@@ -144,6 +148,10 @@
                                 <input type="text" name="staffid" id="staffid" class="form-control" placeholder="StaffId">
                             </div>
                         </div>
+                        <div class="form-group">
+                                <label for="staffid">Course Name</label>
+                                <input type="text" name="coursename" id="coursename" class="form-control" placeholder="Course Name">
+                            </div>
                         <div class="form-group">
                             <input type="submit" name="addteachers" value="Save Details" class="btn btn-primary">
                         </div>
