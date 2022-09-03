@@ -2,6 +2,11 @@
   session_start();
   include_once("config.php");
   include("admin/includes/connection.php");
+  if(isset($_SESSION['student'])){
+
+  }else{
+    header("Location: Auth/index.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

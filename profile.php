@@ -3,6 +3,12 @@
   include("admin/includes/connection.php");
   session_start();
   $_SESSION['name'] = "teachers";
+
+  if(isset($_SESSION['student'])){
+
+  }else{
+    header("Location: Auth/index.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +75,9 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-
+                    <?php
+                      $sql = "SELECTT * FROM "
+                    ?>
                 </div>
             </div>
         </div>
