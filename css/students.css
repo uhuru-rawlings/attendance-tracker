@@ -1,0 +1,43 @@
+body{
+    background-image: url(../images/bucerius-law-school-pdJ0UnuV-A8-unsplash.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+}
+.shadow_login_sections{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(30,25,22,.8);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+.shadow_login_sections .login_sections{
+    width: 40%;
+    margin: auto;
+    /* margin-top: 10%; */
+}
+.login_sections h3{
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 970px){
+    .shadow_login_sections .login_sections{
+        margin: auto;
+        width: 50%;
+    }
+}
+@media screen and (max-width: 720px){
+    .shadow_login_sections .login_sections{
+        margin: auto;
+        width: 70%;
+    }
+}
+@media screen and (max-width: 420px){
+    .shadow_login_sections .login_sections{
+        margin: auto;
+        width: 80%;
+    }
+}
