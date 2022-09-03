@@ -77,14 +77,14 @@
                           <th>Phone</th>
                           <th>Email</th>
                           <th>Adress</th>
-                          <th>StaffId</th>
+                          <th>Adm. no</th>
                           <th>Tribe</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                           <?php
-                            $sql = "SELECT * FROM teachers";
+                            $sql = "SELECT * FROM students";
                             $query = $pdo -> prepare($sql);
                             $query -> execute();
                             $rows = $query -> rowCount();
@@ -100,7 +100,7 @@
                             <td><?php echo $res['phone'] ?></td>
                             <td><?php echo $res['email'] ?></td>
                             <td><?php echo $res['adress'] ?></td>
-                            <td><?php echo $res['staffid'] ?></td>
+                            <td><?php echo $res['admno'] ?></td>
                             <td><?php echo $res['tribe'] ?></td>
                             <td>
                               <?php echo "<a href='delete.php?teacher={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>

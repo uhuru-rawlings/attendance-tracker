@@ -61,13 +61,13 @@
                 <li class="nav-item">
                 <a href="<?php echo BASE_URL .'admin/students/managestudents.php' ?>" class="nav-link">
                     <i class="fa-solid fa-plus nav-icon"></i>
-                    <p>Manage Riders</p>
+                    <p>Manage Students</p>
                 </a>
                 </li>
                 <li class="nav-item">
                 <a href="<?php echo BASE_URL .'admin/students/liststudents.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
-                    <p>List Riders</p>
+                    <p>List Students</p>
                 </a>
                 </li>
             </ul>

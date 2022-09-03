@@ -69,7 +69,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="addteachers_fun.php" method="post">
+                    <form action="addstudents_fun.php" method="post">
                         <?php
                             if(isset($_GET['error'])){
                                 echo "<p class='text-danger'>".$_GET['error']."</p>";

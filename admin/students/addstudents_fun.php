@@ -12,7 +12,7 @@
         $tribegroup = $_POST['tribegroup'];
         $semester = $_POST['semester'];
         $admno = $_POST['staffid'];
-        $coursename = $_POST['coursename'];
+        $coursename = strtolower($_POST['coursename']);
         $password = password_hash("student123",PASSWORD_DEFAULT);
 
         $sql = "SELECT * FROM students WHERE admno=?";
@@ -22,7 +22,7 @@
         if($rows > 0){
             header("Location: addteachers.php?error=Student with these details already exist.");
         }else{
-            $new_staff  = "INSERT INTO teachers(fname,sname,lname,dob,gender,phone,email,adress,tribe,semester,admno,coursename) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $new_staff  = "INSERT INTO students(fname,sname,lname,dob,gender,phone,email,adress,tribe,semester,admno,coursename,passwords) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $execute = $pdo -> prepare($new_staff);
             $execute -> execute([$firstname,$secondname,$lastname,$dateofbirth,$gender,$phonenumber,$emailadress,$homeadress,$tribegroup,$semester,$admno,$coursename,$password]);
             if($execute){
