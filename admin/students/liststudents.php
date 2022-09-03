@@ -103,8 +103,8 @@
                             <td><?php echo $res['admno'] ?></td>
                             <td><?php echo $res['tribe'] ?></td>
                             <td>
-                              <?php echo "<a href='delete.php?teacher={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
-                              <?php echo "<a href='manage-teachers.php?teacher={$res['id']}'><i class='fa-solid fa-pen'></i></a>" ?>
+                              <?php echo "<a href='delete.php?student={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
+                              <?php echo "<a href='manage-teachers.php?student={$res['id']}'><i class='fa-solid fa-pen'></i></a>" ?>
                             </td>
                           </tr>
                           <?php
