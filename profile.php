@@ -1,7 +1,7 @@
 <?php
+  session_start();
   include_once("config.php");
   include("admin/includes/connection.php");
-  session_start();
   $_SESSION['name'] = "teachers";
 
   if(isset($_SESSION['student_login'])){

@@ -15,13 +15,18 @@
             <h3>Attendance Management System</h3>
             <p>Please provide the following details to login</p>
             <form action="login_fun.php" method="post">
+                <?php
+                    if(isset($_GET['error'])){
+                        echo "<p class='text-danger'>".$_GET['error']."</p>";
+                    }
+                ?>
                 <div class="form-group">
                     <label for="admissionnumber">Adm No.</label>
                     <input type="text" name="admissionnumber" id="admissionnumber" class="form-control shadow-none" placeholder="Adm No.">
                 </div>
                 <div class="form-group">
                     <label for="passwords">Password</label>
-                    <input type="password" name="passwords" id="passwords" class="form-control shadow-none" placeholder="Adm No.">
+                    <input type="password" name="passwords" id="passwords" class="form-control shadow-none" placeholder="Password.">
                 </div>
                 <div class="form-group">
                     <input type="submit" name="login" id="login" class="btn btn-primary w-100" value="Login">

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_POST[''])){
+    if(isset($_POST['login'])){
         include("../admin/includes/connection.php");
         $admissionnumber = $_POST['admissionnumber'];
         $passwords = $_POST['passwords'];
@@ -23,7 +23,7 @@
                     }
                 }else{
                     $_SESSION['reset'] = $admissionnumber;
-                    header("Location: ../index.php");
+                    header("Location: reset_password.php");
                 }
             }
         }else{
