@@ -214,7 +214,7 @@
                             <td><?php echo $res['starttime'] ?></td>
                             <td><?php echo $res['endtime'] ?></td>
                             <td>
-                              <?php echo "<a href='delete.php?unit={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
+                              <?php echo "<a href='deleteunit.php?unit={$res['id']}' class='text-danger'><i class='fa-solid fa-trash'></i></a>" ?>
                             </td>
                           </tr>
                           <?php
