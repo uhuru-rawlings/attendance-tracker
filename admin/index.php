@@ -75,9 +75,15 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Vendor</span>
+                <span class="info-box-text">Attendance</span>
                 <span class="info-box-number">
-                  0
+                  <?php
+                    $sql = "SELECT * FROM attendance";
+                    $query = $pdo -> prepare($sql);
+                    $query -> execute();
+                    $rows = $query -> rowCount();
+                    echo $rows;
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -90,9 +96,15 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Users</span>
+                <span class="info-box-text">Students</span>
                 <span class="info-box-number">
-                  0
+                  <?php
+                    $sql = "SELECT * FROM students";
+                    $query = $pdo -> prepare($sql);
+                    $query -> execute();
+                    $rows = $query -> rowCount();
+                    echo $rows;
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -106,12 +118,18 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Products</span>
+                <span class="info-box-text">Lessons</span>
                 <span class="info-box-number">
-                    0
+                <?php
+                    $sql = "SELECT * FROM timetable";
+                    $query = $pdo -> prepare($sql);
+                    $query -> execute();
+                    $rows = $query -> rowCount();
+                    echo $rows;
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -121,12 +139,18 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-dollar"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa-solid fa-chalkboard-user"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
+                <span class="info-box-text">Lectures</span>
                 <span class="info-box-number">
-                20
+                  <?php
+                    $sql = "SELECT * FROM teachers";
+                    $query = $pdo -> prepare($sql);
+                    $query -> execute();
+                    $rows = $query -> rowCount();
+                    echo $rows;
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->

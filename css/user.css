@@ -1,3 +1,11 @@
-.userdetails li{
+#userdetails li{
     list-style: none;
+}
+.user_image_avataor{
+    width: 300px;
+    height: 300px;
+}
+#userdetails{
+    display: flex;
+    align-items: center;
 }

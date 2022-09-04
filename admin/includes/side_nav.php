@@ -16,7 +16,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "teachers"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+            <i class="fa-solid fa-chalkboard-user"></i>
                 <p>
                 Teachers
                 <i class="fas fa-angle-right right"></i>
@@ -45,7 +45,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "students"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+            <i class="fa-solid fa-user"></i>
                 <p>
                 Students
                 <i class="fas fa-angle-right right"></i>
@@ -74,7 +74,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "units"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
+                <i class="nav-icon fas fa-book"></i>
                 <p>
                 Units
                 <i class="right fas fa-angle-right"></i>
@@ -103,7 +103,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "orders"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
-                <i class="fa-solid fa-basket-shopping nav-icon"></i>
+                <i class="fa-solid fa-users"></i>
                 <p>
                 Attendance
                 <i class="fas fa-angle-right right"></i>

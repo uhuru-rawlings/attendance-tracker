@@ -80,9 +80,18 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Vendor</span>
+                <span class="info-box-text">Attendance</span>
                 <span class="info-box-number">
-                  0
+                  <?php
+                    if(isset($_SESSION['student_login'])){
+                      $user = $_SESSION['student_login'];
+                      $sql = "SELECT * FROM attendance WHERE admno=?";
+                      $query = $pdo -> prepare($sql);
+                      $query -> execute([$user]);
+                      $rows = $query -> rowCount();
+                      echo $rows;
+                    }
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -97,7 +106,30 @@
               <div class="info-box-content">
                 <span class="info-box-text">Units</span>
                 <span class="info-box-number">
-                  0
+                  <?php
+                    if(isset($_SESSION['student_login'])){
+                      $user = $_SESSION['student_login'];
+                      $sql = "SELECT * FROM students WHERE admno=?";
+                      $query = $pdo -> prepare($sql);
+                      $query -> execute([$user]);
+                      $rows = $query -> rowCount();
+                      if($rows > 0){
+                        $coursename;
+                        $semester;
+                        while($results = $query -> fetch(PDO::FETCH_ASSOC)){
+                          $coursename = $results['coursename'];
+                          $semester = $results['semester'];
+                        }
+                        $sql = "SELECT DISTINCT unitname FROM timetable WHERE coursename=? AND semster=?";
+                        $query = $pdo -> prepare($sql);
+                        $query -> execute([$coursename,$semester]);
+                        $rows = $query -> rowCount();
+                        echo $rows;
+                      }else{
+                        echo 0;
+                      }
+                    }
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -111,12 +143,35 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-book"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Lessons</span>
                 <span class="info-box-number">
-                    0
+                <?php
+                    if(isset($_SESSION['student_login'])){
+                      $user = $_SESSION['student_login'];
+                      $sql = "SELECT * FROM students WHERE admno=?";
+                      $query = $pdo -> prepare($sql);
+                      $query -> execute([$user]);
+                      $rows = $query -> rowCount();
+                      if($rows > 0){
+                        $coursename;
+                        $semester;
+                        while($results = $query -> fetch(PDO::FETCH_ASSOC)){
+                          $coursename = $results['coursename'];
+                          $semester = $results['semester'];
+                        }
+                        $sql = "SELECT * FROM timetable WHERE coursename=? AND semster=?";
+                        $query = $pdo -> prepare($sql);
+                        $query -> execute([$coursename,$semester]);
+                        $rows = $query -> rowCount();
+                        echo $rows;
+                      }else{
+                        echo 0;
+                      }
+                    }
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -126,12 +181,35 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-dollar"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa-solid fa-chalkboard-user"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
+                <span class="info-box-text">Lectures</span>
                 <span class="info-box-number">
-                20
+                  <?php
+                    if(isset($_SESSION['student_login'])){
+                      $user = $_SESSION['student_login'];
+                      $sql = "SELECT * FROM students WHERE admno=?";
+                      $query = $pdo -> prepare($sql);
+                      $query -> execute([$user]);
+                      $rows = $query -> rowCount();
+                      if($rows > 0){
+                        $coursename;
+                        $semester;
+                        while($results = $query -> fetch(PDO::FETCH_ASSOC)){
+                          $coursename = $results['coursename'];
+                          $semester = $results['semester'];
+                        }
+                        $sql = "SELECT DISTINCT teacher FROM timetable WHERE coursename=? AND semster=?";
+                        $query = $pdo -> prepare($sql);
+                        $query -> execute([$coursename,$semester]);
+                        $rows = $query -> rowCount();
+                        echo $rows;
+                      }else{
+                        echo 0;
+                      }
+                    }
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -235,7 +313,6 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script src="admin/css/main.d810cf0ae7f39f28f336.js"></script>
 <!-- jQuery -->
 <script src="admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->

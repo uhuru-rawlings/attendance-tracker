@@ -15,7 +15,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A.M.S | Add Teachers</title>
+  <title>A.M.S | My Profile</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -58,12 +58,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Add Teachers</h1>
+            <h1 class="m-0">My Profile</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Add Teachers</li>
+              <li class="breadcrumb-item active">My Profile</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -78,10 +78,62 @@
                 <div class="card-body">
                     <div class="row">
                       <div class="col col-md-6">
-
+                        <div class="user_image_avataor">
+                          <img src="images/user.png" width="100%" height="100%" alt="">
+                        </div>
                       </div>
                       <div class="col col-md-6" id="userdetails">
-                          <?php
+                          <div class="details">
+                            <?php
+                                if(isset($_SESSION['student_login'])){
+                                  $user = $_SESSION['student_login'];
+                                  $sql = "SELECT * FROM students WHERE admno=?";
+                                  $query = $pdo -> prepare($sql);
+                                  $query -> execute([$user]);
+                                  if($rows = $query -> rowCount() > 0){
+                                    while($res = $query -> fetch(PDO::FETCH_ASSOC)){
+                                      $fullname = $res['fname']. " ".$res['lname'];
+                                      $email = $res['email'];
+                                      $phone = $res['phone'];
+                                      $course = $res['coursename'];
+                                      $semester = $res['semester'];
+                                      $admno = $res['admno'];
+                                      echo "<li>Name: {$fullname}</li>";
+                                      echo "<li>Email: {$email}</li>";
+                                      echo "<li>Phone: {$phone}</li>";
+                                      echo "<li>Course: {$course}</li>";
+                                      echo "<li>Semester: {$semester}</li>";
+                                      echo "<li>Adm No.: {$admno}</li>";
+                                    }
+                                  }else{
+                                    header("Location: Auth/index.php");
+                                  }
+                                }else{
+                                  header("Location: Auth/index.php");
+                                }
+                            ?>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                  <h4>My Units</h4>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Lecturer</th>
+                            <th>Coursename</th>
+                            <th>Semester</th>
+                            <th>Unitname</th>
+                            <th>Starttime</th>
+                            <th>Endtime</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php
                           if(isset($_SESSION['student_login'])){
                             $user = $_SESSION['student_login'];
                             $sql = "SELECT * FROM students WHERE admno=?";
@@ -89,18 +141,30 @@
                             $query -> execute([$user]);
                             if($rows = $query -> rowCount() > 0){
                               while($res = $query -> fetch(PDO::FETCH_ASSOC)){
-                                $fullname = $res['fname']. " ".$res['lname'];
-                                $email = $res['email'];
-                                $phone = $res['phone'];
                                 $course = $res['coursename'];
                                 $semester = $res['semester'];
-                                $admno = $res['admno'];
-                                echo "<li>Name: {$fullname}</li>";
-                                echo "<li>Email: {$email}</li>";
-                                echo "<li>Phone: {$phone}</li>";
-                                echo "<li>Course: {$course}</li>";
-                                echo "<li>Semester: {$semester}</li>";
-                                echo "<li>Adm No.: {$admno}</li>";
+                                $sql = "SELECT * FROM timetable WHERE coursename=? AND semster=?";
+                                $query = $pdo -> prepare($sql);
+                                $query -> execute([$course,$semester]);
+                                if($rows = $query -> rowCount() > 0){
+                                  while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                                    foreach($results as $result){
+                          ?>
+                          <tr>
+                            <td><?php echo $result['teacher'] ?></td>
+                            <td><?php echo $result['coursename'] ?></td>
+                            <td><?php echo $result['semster'] ?></td>
+                            <td><?php echo $result['unitname'] ?></td>
+                            <td><?php echo $result['starttime'] ?></td>
+                            <td><?php echo $result['endtime'] ?></td>
+                            <td><a href="attend.php?lesson=<?php echo $result['id']; ?>"><button class="btn btn-success">Attend</button></a></td>
+                          </tr>
+                          <?php
+                                    }
+                                  }
+                                }else{
+                                  echo "<tr><td colspan='7'>No unit scheduled</td></tr>";
+                                }
                               }
                             }else{
                               header("Location: Auth/index.php");
@@ -109,8 +173,8 @@
                             header("Location: Auth/index.php");
                           }
                         ?>
-                      </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
