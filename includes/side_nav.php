@@ -7,7 +7,7 @@
         <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="<?php echo BASE_URL .'admin/index.php' ?>" class="nav-link active">
+            <a href="<?php echo BASE_URL .'index.php' ?>" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                 Dashboard
@@ -30,7 +30,7 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/teachers/listteachers.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'listattendance.php' ?>" class="nav-link">
                     <i class="fa-solid fa-list nav-icon"></i>
                     <p>List Attendance</p>
                 </a>
