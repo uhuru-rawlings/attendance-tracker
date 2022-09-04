@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if(isset($_SESSION['adminuser'])){
-        unset($_SESSION['adminuser']);
+    if(isset($_SESSION['student_login'])){
+        unset($_SESSION['student_login']);
         header("Location: index.php");
     }
 ?>
