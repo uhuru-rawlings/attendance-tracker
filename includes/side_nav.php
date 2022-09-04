@@ -16,7 +16,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "profile"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fas fa-user"></i>
                 <p>
                 Profile
                 <i class="fas fa-angle-right right"></i>
@@ -39,7 +39,7 @@
         </li>
         <li class="nav-item <?php if($_SESSION['name'] == "reports"){ echo("menu-open"); } ?>">
             <a href="<?php echo BASE_URL.'logout.php'?>" class="nav-link">
-                <i class="fa-solid fa-chart-line"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
                 <p>
                 Logout
                 <i class="fas fa-angle-right right"></i>

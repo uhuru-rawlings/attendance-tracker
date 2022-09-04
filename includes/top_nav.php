@@ -1,9 +1,9 @@
 <?php
 include_once("../config.php");
-if (isset($_SESSION['adminuser'])) {
+if (isset($_SESSION['student_login'])) {
 } else {
   // header("Location:".BASE_URL."admin/auth/index.php");
-  $URL = BASE_URL . "admin/auth/index.php";
+  $URL = BASE_URL . "index.php";
   echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
   echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
