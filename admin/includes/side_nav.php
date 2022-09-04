@@ -101,29 +101,6 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item <?php if($_SESSION['name'] == "orders"){ echo("menu-open"); } ?>">
-            <a href="#" class="nav-link">
-                <i class="fa-solid fa-users"></i>
-                <p>
-                Attendance
-                <i class="fas fa-angle-right right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/orders/listorders.php' ?>" class="nav-link">
-                <i class="fa-solid fa-list nav-icon"></i>
-                    <p>List Orders</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/orders/payments.php' ?>" class="nav-link">
-                <i class="fa-solid fa-dollar nav-icon"></i>
-                    <p>Payments</p>
-                </a>
-                </li>
-            </ul>
-        </li>
         <li class="nav-item <?php if($_SESSION['name'] == "reports"){ echo("menu-open"); } ?>">
             <a href="#" class="nav-link">
                 <i class="fa-solid fa-chart-line"></i>
@@ -134,12 +111,21 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL .'admin/reports/sales_report.php' ?>" class="nav-link">
+                <a href="<?php echo BASE_URL .'admin/reports/attendance_report.php' ?>" class="nav-link">
                     <i class="fa-solid fa-file-excel"></i>
                     <p>Attendance Report</p>
                 </a>
                 </li>
             </ul>
+        </li>
+        <li class="nav-item <?php if($_SESSION['name'] == "reports"){ echo("menu-open"); } ?>">
+            <a href="<?php echo BASE_URL.'admin/logout.php'?>" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <p>
+                Logout
+                <i class="fas fa-angle-right right"></i>
+                </p>
+            </a>
         </li>
     </ul>
     </nav>

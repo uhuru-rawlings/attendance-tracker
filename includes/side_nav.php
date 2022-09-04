@@ -37,6 +37,15 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item <?php if($_SESSION['name'] == "reports"){ echo("menu-open"); } ?>">
+            <a href="<?php echo BASE_URL.'logout.php'?>" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <p>
+                Logout
+                <i class="fas fa-angle-right right"></i>
+                </p>
+            </a>
+        </li>
     </ul>
     </nav>
     <!-- /.sidebar-menu -->
