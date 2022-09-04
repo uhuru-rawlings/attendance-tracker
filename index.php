@@ -141,6 +141,66 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
+        <div class="card">
+          <div class="card-body">
+            <header><h4>Time Table</h4></header>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Lecturer</th>
+                  <th>Coursename</th>
+                  <th>Semester</th>
+                  <th>Unitname</th>
+                  <th>Starttime</th>
+                  <th>Endtime</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+                if(isset($_SESSION['student_login'])){
+                  $user = $_SESSION['student_login'];
+                  $sql = "SELECT * FROM students WHERE admno=?";
+                  $query = $pdo -> prepare($sql);
+                  $query -> execute([$user]);
+                  if($rows = $query -> rowCount() > 0){
+                    while($res = $query -> fetch(PDO::FETCH_ASSOC)){
+                      $course = $res['coursename'];
+                      $semester = $res['semester'];
+                      $sql = "SELECT * FROM timetable WHERE coursename=? AND semster=?";
+                      $query = $pdo -> prepare($sql);
+                      $query -> execute([$course,$semester]);
+                      if($rows = $query -> rowCount() > 0){
+                        while($results = $query -> fetchAll(PDO::FETCH_ASSOC)){
+                          foreach($results as $result){
+                ?>
+                <tr>
+                  <td><?php echo $result['teacher'] ?></td>
+                  <td><?php echo $result['coursename'] ?></td>
+                  <td><?php echo $result['semster'] ?></td>
+                  <td><?php echo $result['unitname'] ?></td>
+                  <td><?php echo $result['starttime'] ?></td>
+                  <td><?php echo $result['endtime'] ?></td>
+                  <td><a href="attend.php?lesson=<?php echo $result['id']; ?>"><button class="btn btn-success">Attend</button></a></td>
+                </tr>
+                <?php
+                          }
+                        }
+                      }else{
+                        echo "<tr><td colspan='7'>No unit scheduled</td></tr>";
+                      }
+                    }
+                  }else{
+                    header("Location: Auth/index.php");
+                  }
+                }else{
+                  header("Location: Auth/index.php");
+                }
+              ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <!-- /.row -->
 
         <!-- Main row -->

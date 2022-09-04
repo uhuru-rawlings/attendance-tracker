@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="admin/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="admin/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/NicEdit/0.93/nicEdit.min.js" integrity="sha512-rsE25pK/XkI20cvXanU1xC7QcyDEaM2cdcVS53Y/1oSNfKv8uCA/2DagW1BX/cwR6u6Zq3/zY+L+3zoBvfgi5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="css/user.css">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -75,9 +76,41 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <?php
-                      $sql = "SELECTT * FROM "
-                    ?>
+                    <div class="row">
+                      <div class="col col-md-6">
+
+                      </div>
+                      <div class="col col-md-6" id="userdetails">
+                          <?php
+                          if(isset($_SESSION['student_login'])){
+                            $user = $_SESSION['student_login'];
+                            $sql = "SELECT * FROM students WHERE admno=?";
+                            $query = $pdo -> prepare($sql);
+                            $query -> execute([$user]);
+                            if($rows = $query -> rowCount() > 0){
+                              while($res = $query -> fetch(PDO::FETCH_ASSOC)){
+                                $fullname = $res['fname']. " ".$res['lname'];
+                                $email = $res['email'];
+                                $phone = $res['phone'];
+                                $course = $res['coursename'];
+                                $semester = $res['semester'];
+                                $admno = $res['admno'];
+                                echo "<li>Name: {$fullname}</li>";
+                                echo "<li>Email: {$email}</li>";
+                                echo "<li>Phone: {$phone}</li>";
+                                echo "<li>Course: {$course}</li>";
+                                echo "<li>Semester: {$semester}</li>";
+                                echo "<li>Adm No.: {$admno}</li>";
+                              }
+                            }else{
+                              header("Location: Auth/index.php");
+                            }
+                          }else{
+                            header("Location: Auth/index.php");
+                          }
+                        ?>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
