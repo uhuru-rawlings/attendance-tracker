@@ -217,10 +217,10 @@
                               }
                             }
                           }else{
-                            header("Location: Auth/index.php");
+                            // header("Location: Auth/index.php");
                           }
                         }else{
-                          header("Location: Auth/index.php");
+                          // header("Location: Auth/index.php");
                         }
                       ?>
                       </tbody>

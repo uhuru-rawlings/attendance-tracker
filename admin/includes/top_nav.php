@@ -1,5 +1,4 @@
 <?php
-include_once("../config.php");
 if (isset($_SESSION['adminuser'])) {
 } else {
   // header("Location:".BASE_URL."admin/auth/index.php");
